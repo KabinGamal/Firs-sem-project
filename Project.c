@@ -108,3 +108,69 @@ int main() {
     
     return 0;
 }
+void displayMainMenu() {
+    system("cls || clear"); 
+    printHeader("MAIN MENU");
+    printf("\n1. Manage Doctors");
+    printf("\n2. Manage Patients");
+    printf("\n3. Manage Appointments");
+    printf("\n4. View Hospital Statistics");
+    printf("\n5. Emergency Contacts");
+    printf("\n6. Exit System\n");
+    printf("\nWelcome to our Hospital Management System");
+    printf("\nPlease select an option to continue...");
+}
+
+void manageDoctors() {
+    int choice;
+    do {
+        system("cls || clear");
+        printHeader("DOCTOR MANAGEMENT");
+        printf("\n1. Add New Doctor");
+        printf("\n2. View All Doctors");
+        printf("\n3. Search Doctor");
+        printf("\n4. Update Doctor Information");
+        printf("\n5. Return to Main Menu");
+        printf("\n\nEnter your choice: ");
+        scanf("%d", &choice);
+        clearInputBuffer();
+        
+        switch(choice) {
+            case 1: addDoctor(); break;
+            case 2: viewDoctors(); break;
+            case 3: searchDoctor(); break;
+            case 4: updateDoctor(); break;
+            case 5: break;
+            default:
+                printf("\nInvalid choice. Please try again.\n");
+                pressAnyKeyToContinue();
+        }
+    } while(choice != 5);
+}
+
+void managePatients() {
+    int choice;
+    do {
+        system("cls || clear");
+        printHeader("PATIENT MANAGEMENT");
+        printf("\n1. Add New Patient");
+        printf("\n2. View All Patients");
+        printf("\n3. Search Patient");
+        printf("\n4. Update Patient Information");
+        printf("\n5. Return to Main Menu");
+        printf("\n\nEnter your choice: ");
+        scanf("%d", &choice);
+        clearInputBuffer();
+        
+        switch(choice) {
+            case 1: addPatient(); break;
+            case 2: viewPatients(); break;
+            case 3: searchPatient(); break;
+            case 4: updatePatient(); break;
+            case 5: break;
+            default:
+                printf("\nInvalid choice. Please try again.\n");
+                pressAnyKeyToContinue();
+        }
+    } while(choice != 5);
+}
