@@ -202,3 +202,38 @@ void manageAppointments() {
         }
     } while(choice != 6);
 }
+void addDoctor() {
+    system("cls || clear");
+    printHeader("ADD NEW DOCTOR");
+    
+    if(doctorCount >= 100) {
+        printf("\nMaximum number of doctors reached. Cannot add more.\n");
+        pressAnyKeyToContinue();
+        return;
+    }
+    
+    Doctor d;
+    d.id = 1000 + doctorCount + 1;
+    
+    printf("\nDoctor ID will be automatically assigned as: %d", d.id);
+    
+    printf("\n\nEnter Doctor's Name: ");
+    fgets(d.name, sizeof(d.name), stdin);
+    d.name[strcspn(d.name, "\n")] = '\0'; 
+    
+    printf("Enter Specialization: ");
+    fgets(d.specialization, sizeof(d.specialization), stdin);
+    d.specialization[strcspn(d.specialization, "\n")] = '\0';
+    
+    printf("Enter Contact Number: ");
+    fgets(d.contact, sizeof(d.contact), stdin);
+    d.contact[strcspn(d.contact, "\n")] = '\0';
+    
+    d.available = 1;
+    
+    doctors[doctorCount++] = d;
+    
+    printf("\nDoctor added successfully!\n");
+    saveData();
+    pressAnyKeyToContinue();
+}
