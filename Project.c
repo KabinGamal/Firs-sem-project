@@ -69,3 +69,42 @@ void printHeader(const char *title);
 void pressAnyKeyToContinue();
 int validateDate(const char *date);
 int validateTime(const char *time);
+int main() {
+    loadData();
+    
+    int choice;
+    do {
+        displayMainMenu();
+        printf("\nEnter your choice: ");
+        scanf("%d", &choice);
+        clearInputBuffer();
+        
+        switch(choice) {
+            case 1:
+                manageDoctors();
+                break;
+            case 2:
+                managePatients();
+                break;
+            case 3:
+                manageAppointments();
+                break;
+            case 4:
+                displayHospitalStats();
+                break;
+            case 5:
+                displayEmergencyContacts();
+                break;
+            case 6:
+                printf("\nSaving data and exiting system...\n");
+                saveData();
+                printf("Thank you for using the Hospital Management System.\n");
+                break;
+            default:
+                printf("\nInvalid choice. Please try again.\n");
+                pressAnyKeyToContinue();
+        }
+    } while(choice != 6);
+    
+    return 0;
+}
