@@ -386,3 +386,55 @@ void updateDoctor() {
     saveData();
     pressAnyKeyToContinue();
 }
+void addPatient() {
+    system("cls || clear");
+    printHeader("ADD NEW PATIENT");
+    
+    if(patientCount >= 100) {
+        printf("\nMaximum number of patients reached. Cannot add more.\n");
+        pressAnyKeyToContinue();
+        return;
+    }
+    
+    Patient p;
+    p.id = 2000 + patientCount + 1;
+    
+    printf("\nPatient ID will be automatically assigned as: %d", p.id);
+    
+    printf("\n\nEnter Patient's Name: ");
+    fgets(p.name, sizeof(p.name), stdin);
+    p.name[strcspn(p.name, "\n")] = '\0';
+    
+    printf("Enter Age: ");
+    scanf("%d", &p.age);
+    clearInputBuffer();
+    
+    printf("Enter Gender (M/F/O): ");
+    scanf("%c", &p.gender);
+    clearInputBuffer();
+    p.gender = toupper(p.gender);
+    
+    printf("Enter Address: ");
+    fgets(p.address, sizeof(p.address), stdin);
+    p.address[strcspn(p.address, "\n")] = '\0';
+    
+    printf("Enter Contact Number: ");
+    fgets(p.contact, sizeof(p.contact), stdin);
+    p.contact[strcspn(p.contact, "\n")] = '\0';
+    
+    printf("Enter Blood Type: ");
+    fgets(p.bloodType, sizeof(p.bloodType), stdin);
+    p.bloodType[strcspn(p.bloodType, "\n")] = '\0';
+    
+    printf("Enter Medical History (if any): ");
+    fgets(p.medicalHistory, sizeof(p.medicalHistory), stdin);
+    p.medicalHistory[strcspn(p.medicalHistory, "\n")] = '\0';
+    
+    patients[patientCount++] = p;
+    
+    printf("\nPatient added successfully!\n");
+    displayPatientCard(p.id);
+    
+    saveData();
+    pressAnyKeyToContinue();
+}
