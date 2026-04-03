@@ -892,5 +892,29 @@ int validateDate(const char *date) {
 int validateTime(const char *time) {
     return strlen(time) > 0; 
 }
+void saveData() {
+    FILE *fp = fopen("hospital_data.dat", "wb");
+    if(fp) {
+        fwrite(&doctorCount, sizeof(int), 1, fp);
+        fwrite(doctors, sizeof(Doctor), doctorCount, fp);
+        fwrite(&patientCount, sizeof(int), 1, fp);
+        fwrite(patients, sizeof(Patient), patientCount, fp);
+        fwrite(&appointmentCount, sizeof(int), 1, fp);
+        fwrite(appointments, sizeof(Appointment), appointmentCount, fp);
+        fclose(fp);
+    }
+}
 
+void loadData() {
+    FILE *fp = fopen("hospital_data.dat", "rb");
+    if(fp) {
+        fread(&doctorCount, sizeof(int), 1, fp);
+        fread(doctors, sizeof(Doctor), doctorCount, fp);
+        fread(&patientCount, sizeof(int), 1, fp);
+        fread(patients, sizeof(Patient), patientCount, fp);
+        fread(&appointmentCount, sizeof(int), 1, fp);
+        fread(appointments, sizeof(Appointment), appointmentCount, fp);
+        fclose(fp);
+    }
+}
 
