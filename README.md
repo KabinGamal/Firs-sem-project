@@ -15,10 +15,10 @@ A lightweight, console-based management system written in C to handle daily hosp
 
 🛠️ Technical Details
 
--Language: C
+.Language: C
 
--Storage: Binary File Handling (.dat files)
+.Storage: Binary File Handling (.dat files)
 
--Data Structures: Custom struct definitions for Doctors, Patients, and Appointments.
+.Data Structures: Custom struct definitions for Doctors, Patients, and Appointments.
 
--UI: Interactive Command Line Interface (CLI).
+.UI: Interactive Command Line Interface (CLI).
