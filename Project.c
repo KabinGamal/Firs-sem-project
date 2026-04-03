@@ -828,4 +828,69 @@ void cancelAppointment() {
     pressAnyKeyToContinue();
 }
 
+void displayUpcomingAppointments() {
+    system("cls || clear");
+    printHeader("UPCOMING APPOINTMENTS");
+    
+    int found = 0;
+    printf("\n%-8s %-8s %-8s %-11s %-6s %-20s\n", "App ID", "Pat ID", "Dr ID", "Date", "Time", "Purpose");
+    printf("-----------------------------------------------------------------------\n");
+    for(int i = 0; i < appointmentCount; i++) {
+        if(!appointments[i].completed) {
+            printf("%-8d %-8d %-8d %-11s %-6s %-20s\n", appointments[i].id, appointments[i].patientId, appointments[i].doctorId, appointments[i].date, appointments[i].time, appointments[i].purpose);
+            found = 1;
+        }
+    }
+    if(!found) printf("\nNo upcoming appointments.\n");
+    pressAnyKeyToContinue();
+}
+
+void displayHospitalStats() {
+    system("cls || clear");
+    printHeader("HOSPITAL STATISTICS");
+    printf("\nTotal Doctors: %d", doctorCount);
+    printf("\nTotal Patients: %d", patientCount);
+    printf("\nTotal Appointments: %d\n", appointmentCount);
+    pressAnyKeyToContinue();
+}
+
+void displayEmergencyContacts() {
+    system("cls || clear");
+    printHeader("EMERGENCY CONTACTS");
+    printf("\nAmbulance: 911");
+    printf("\nFront Desk: 555-0100");
+    printf("\nOn-call Doctor: 555-0199\n");
+    pressAnyKeyToContinue();
+}
+
+void displayDoctorSchedule(int doctorId) {
+}
+
+void getCurrentDateTime(char *date, char *time) {
+}
+
+void clearInputBuffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+void printHeader(const char *title) {
+    printf("\n=======================================================\n");
+    printf("                  %s                  \n", title);
+    printf("=======================================================\n");
+}
+
+void pressAnyKeyToContinue() {
+    printf("\nPress Enter to continue...");
+    getchar();
+}
+
+int validateDate(const char *date) {
+    return strlen(date) > 0; 
+}
+
+int validateTime(const char *time) {
+    return strlen(time) > 0; 
+}
+
 
