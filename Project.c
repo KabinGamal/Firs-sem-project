@@ -604,4 +604,62 @@ void updatePatient() {
     saveData();
     pressAnyKeyToContinue();
 }
+void displayPatientCard(int patientId) {
+    int index = -1;
+    for(int i = 0; i < patientCount; i++) {
+        if(patients[i].id == patientId) {
+            index = i;
+            break;
+        }
+    }
+    
+    if(index == -1) {
+        printf("\nPatient with ID %d not found.\n", patientId);
+        return;
+    }
+    
+    printf("\n================================================================\n");
+    printf("                      PATIENT MEDICAL CARD                      \n");
+    printf("================================================================\n");
+    printf("  %-58s \n", patients[index].name);
+    printf("----------------------------------------------------------------\n");
+    printf("  ID: %-53d \n", patients[index].id);
+    printf("  Age: %-2d                                Gender: %-14c \n", patients[index].age, patients[index].gender);
+    printf("  Blood Type: %-45s \n", patients[index].bloodType);
+    printf("  Contact: %-48s \n", patients[index].contact);
+    printf("  Address: %-48s \n", patients[index].address);
+    printf("----------------------------------------------------------------\n");
+    printf("  MEDICAL HISTORY:                                              \n");
+    printf("  %-58s \n", patients[index].medicalHistory);
+    printf("================================================================\n");
+}
+void displayPatientCard(int patientId) {
+    int index = -1;
+    for(int i = 0; i < patientCount; i++) {
+        if(patients[i].id == patientId) {
+            index = i;
+            break;
+        }
+    }
+    
+    if(index == -1) {
+        printf("\nPatient with ID %d not found.\n", patientId);
+        return;
+    }
+    
+    printf("\n================================================================\n");
+    printf("                      PATIENT MEDICAL CARD                      \n");
+    printf("================================================================\n");
+    printf("  %-58s \n", patients[index].name);
+    printf("----------------------------------------------------------------\n");
+    printf("  ID: %-53d \n", patients[index].id);
+    printf("  Age: %-2d                                Gender: %-14c \n", patients[index].age, patients[index].gender);
+    printf("  Blood Type: %-45s \n", patients[index].bloodType);
+    printf("  Contact: %-48s \n", patients[index].contact);
+    printf("  Address: %-48s \n", patients[index].address);
+    printf("----------------------------------------------------------------\n");
+    printf("  MEDICAL HISTORY:                                              \n");
+    printf("  %-58s \n", patients[index].medicalHistory);
+    printf("================================================================\n");
+}
 
