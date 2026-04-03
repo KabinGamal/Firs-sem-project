@@ -2,6 +2,7 @@
 A lightweight, console-based management system written in C to handle daily hospital operations. This project uses structured data and file handling to manage doctors, patients, and medical appointments efficiently.
 
 ✨ Features
+
 -👨‍⚕️ Doctor Management: Add, search, update, and track availability of medical staff.
 
 -🩺 Patient Records: Maintain digital medical cards including blood type and medical history.
@@ -11,3 +12,13 @@ A lightweight, console-based management system written in C to handle daily hosp
 -📊 Live Statistics: Quick dashboard for total counts of staff and patients.
 
 -💾 Data Persistence: Automatically saves and loads data from hospital_data.dat using binary file I/O.
+
+🛠️ Technical Details
+
+-Language: C
+
+-Storage: Binary File Handling (.dat files)
+
+-Data Structures: Custom struct definitions for Doctors, Patients, and Appointments.
+
+-UI: Interactive Command Line Interface (CLI).
