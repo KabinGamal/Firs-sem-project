@@ -736,5 +736,96 @@ void scheduleAppointment() {
     saveData();
     pressAnyKeyToContinue();
 }
+void viewAppointments() {
+    system("cls || clear");
+    printHeader("ALL APPOINTMENTS");
+    
+    if(appointmentCount == 0) {
+        printf("\nNo appointments found in the system.\n");
+        pressAnyKeyToContinue();
+        return;
+    }
+    
+    printf("\n%-8s %-8s %-8s %-11s %-6s %-20s %s\n", "App ID", "Pat ID", "Dr ID", "Date", "Time", "Purpose", "Status");
+    printf("-------------------------------------------------------------------------------\n");
+    
+    for(int i = 0; i < appointmentCount; i++) {
+        printf("%-8d %-8d %-8d %-11s %-6s %-20s %s\n", 
+               appointments[i].id,
+               appointments[i].patientId,
+               appointments[i].doctorId,
+               appointments[i].date,
+               appointments[i].time,
+               appointments[i].purpose,
+               appointments[i].completed ? "Completed" : "Pending");
+    }
+    
+    pressAnyKeyToContinue();
+}
+
+void completeAppointment() {
+    system("cls || clear");
+    printHeader("COMPLETE APPOINTMENT");
+    
+    int id;
+    printf("\nEnter Appointment ID to mark as completed: ");
+    scanf("%d", &id);
+    clearInputBuffer();
+    
+    int found = 0;
+    for(int i = 0; i < appointmentCount; i++) {
+        if(appointments[i].id == id && !appointments[i].completed) {
+            appointments[i].completed = 1;
+            found = 1;
+            break;
+        }
+    }
+    
+    if(found) {
+        printf("\nAppointment marked as completed successfully!\n");
+        saveData();
+    } else {
+        printf("\nAppointment not found or already completed.\n");
+    }
+    
+    pressAnyKeyToContinue();
+}
+
+void cancelAppointment() {
+    system("cls || clear");
+    printHeader("CANCEL APPOINTMENT");
+    
+    if(appointmentCount == 0) {
+        printf("\nNo appointments found in the system.\n");
+        pressAnyKeyToContinue();
+        return;
+    }
+    
+    int id;
+    printf("\nEnter Appointment ID to cancel: ");
+    scanf("%d", &id);
+    clearInputBuffer();
+    
+    int index = -1;
+    for(int i = 0; i < appointmentCount; i++) {
+        if(appointments[i].id == id) {
+            index = i;
+            break;
+        }
+    }
+    
+    if(index != -1) {
+        for(int i = index; i < appointmentCount - 1; i++) {
+            appointments[i] = appointments[i + 1];
+        }
+        appointmentCount--;
+        printf("\nAppointment canceled successfully!\n");
+        saveData();
+    } else {
+        printf("\nAppointment ID not found.\n");
+    }
+    
+    pressAnyKeyToContinue();
+}
 
 
